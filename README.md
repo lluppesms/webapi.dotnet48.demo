@@ -21,10 +21,9 @@ conn.AccessToken = token.Token;
 
 The Contoso.WebApi.Tests project shows an example of how the SQL Server can be mocked with a simple in-memory database, allowing you to run unit tests in your pipeline without having to have a SQL Server available.
 
-
 ---
 
-## Feature Demo: In-Memory Unit Tests
+## Feature Demo: .http Test Client
 
 The Contoso.WebApi contains a [folder](/web/Contoso.WebApi/TestCases/TestClient/) of test files that can be used to test the APIs in this project.  It uses the new ".http" file extension that is not supported in current versions of Visual Studio (and VS Code).
 

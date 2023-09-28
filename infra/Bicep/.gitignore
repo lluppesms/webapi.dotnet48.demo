@@ -1,2 +1,4 @@
 *.json
 *.ps1
+!resourceAbbreviations.json
+!bicepconfig.json
