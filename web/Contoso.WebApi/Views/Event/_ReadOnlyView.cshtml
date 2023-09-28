@@ -1,0 +1,29 @@
+@model Contoso.WebApi.Data.Tbl_FactEvent
+<table>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventID, ViewData).Description)">@Html.LabelFor(m => m.EventID)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.EventID)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.RoomID, ViewData).Description)">@Html.LabelFor(m => m.RoomID)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.RoomID)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventName, ViewData).Description)">@Html.LabelFor(m => m.EventName)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.EventName)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventOwner, ViewData).Description)">@Html.LabelFor(m => m.EventOwner)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.EventOwner)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventStartDateTime, ViewData).Description)">@Html.LabelFor(m => m.EventStartDateTime)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.EventStartDateTime)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventEndDateTime, ViewData).Description)">@Html.LabelFor(m => m.EventEndDateTime)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.EventEndDateTime)</td>
+  </tr>
+
+</table>
+

@@ -1,0 +1,59 @@
+# ------------------------------------------------------------------------------------------------------------------------
+# GHA Workflow to deploy Website App Only
+# ------------------------------------------------------------------------------------------------------------------------
+# You need to set up secrets in the GitHub Secrets Repository before running these workflows.
+#   See readme.md for details
+# ------------------------------------------------------------------------------------------------------------------------
+name: deploy.dnf.website
+on:
+  workflow_dispatch:
+    inputs:
+      securityScan:
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - true
+          - false
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+          - info
+          - warning
+          - debug 
+
+jobs:
+# ------------------------------------------------------------------------------------------------------------------------
+  scan-code:
+    name: Scan Source Code
+    if: inputs.securityScan == 'true'
+    uses: ./.github/workflows/template-security-scan.yml
+
+# ------------------------------------------------------------------------------------------------------------------------
+  build-app:
+    name: Build Website App
+    uses: ./.github/workflows/template-dnf-build-website.yml
+    secrets: inherit
+    with:
+      envCode: 'dev'
+      rootDirectory: 'web\Contoso.WebApi'
+      projectName: 'Contoso.WebApi.csproj'
+      packagesDirectory: 'web\packages'
+      artifactName: ApiSolutionBundle
+      packagePath: drop
+      listFilesAfterBuild: true
+
+# ------------------------------------------------------------------------------------------------------------------------
+  deploy-dev:
+    name: Deploy Website App
+    needs: build-app
+    uses: ./.github/workflows/template-dnf-deploy-website.yml
+    secrets: inherit
+    with:
+      envCode: 'dev'
+      artifactName: ApiSolutionBundle
+      packagePath: drop
+      listFilesBeforeDeploy: true

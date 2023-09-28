@@ -1,0 +1,57 @@
+### --------------------------------------------------------------------------------
+### Test harness for Office APIs
+### --------------------------------------------------------------------------------
+@baseUrl = https://localhost:44323/api
+
+### Get List of Offices ------------------------------------------------------------
+GET {{baseUrl}}/office/list
+
+### Get One Office Record ----------------------------------------------------------
+@officeId = 2
+GET {{baseUrl}}/office/{{officeId}}
+
+### Get One Office Details plus list of rooms --------------------------------------
+GET {{baseUrl}}/office/details/{{officeId}}
+
+### Get detailed Room info for one Office ------------------------------------------
+GET {{baseUrl}}/office/rooms/{{officeId}}
+
+### Create New Office Record -------------------------------------------------------
+POST {{baseUrl}}/office
+content-type: text/json
+
+{
+  "name": "Unit Test 1",
+  "address": "101 Main",
+  "city": "Redmond",
+  "state": "WA",
+  "zipcode": "98052",
+  "country": "USA"
+}
+
+### Get List of Offices
+GET {{baseUrl}}/office/list
+
+### Update existing Office Record --------------------------------------------------
+@newOfficeId = 4
+PUT {{baseUrl}}/office
+content-type: text/json
+
+{
+  "id": {{newOfficeId}},
+  "name": "Unit Test 1B",
+  "address": "101 Main",
+  "city": "Redmond",
+  "state": "WA",
+  "zipcode": "98052",
+  "country": "USA"
+}
+
+### Get List of Offices
+GET {{baseUrl}}/office/list
+
+### Delete newly added Office Record -----------------------------------------------
+DELETE {{baseUrl}}/office/{{newOfficeId}}
+
+### Get List of Offices
+GET {{baseUrl}}/office/list

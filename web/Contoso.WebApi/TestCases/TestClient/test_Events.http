@@ -1,0 +1,49 @@
+### --------------------------------------------------------------------------------
+### Test harness for Event APIs
+### --------------------------------------------------------------------------------
+@baseUrl = https://localhost:44323/api
+
+### Get List of All Events ------------------------------------------------------------
+GET {{baseUrl}}/event/list
+
+### Get Event for one Room ----------------------------------------------------------
+@roomId = 2
+GET {{baseUrl}}/event/room/{{roomId}}
+
+### Create New Event Record -------------------------------------------------------
+POST {{baseUrl}}/event/
+content-type: text/json
+
+{
+  "roomId": {{roomId}},
+  "name": "Event Unit Test 21",
+  "owner": "Tester 1",
+  "startDateTime": "2023-10-01T08:00",
+  "endDateTime": "2023-10-01T08:30"
+}
+
+### Get List of Events for one Room
+GET {{baseUrl}}/event/room/{{roomId}}
+
+### Update existing Event Record --------------------------------------------------
+@newEventId = 14
+PUT {{baseUrl}}/event
+content-type: text/json
+
+{
+  "id": {{newEventId}},
+  "roomId": {{roomId}},
+  "name": "Event Unit Test 21B",
+  "owner": "Tester 1",
+  "startDateTime": "2023-10-01T08:00",
+  "endDateTime": "2023-10-01T08:30"
+}
+
+### Get List of Events for one Room
+GET {{baseUrl}}/event/room/{{roomId}}
+
+### Delete newly added Event Record -----------------------------------------------
+DELETE {{baseUrl}}/event/{{newEventId}}
+
+### Get List of Events for one Room
+GET {{baseUrl}}/event/Room/{{roomId}}

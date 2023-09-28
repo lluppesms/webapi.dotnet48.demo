@@ -1,0 +1,88 @@
+# ------------------------------------------------------------------------------------------------------------------------
+# GHA Reusable Called Workflow to deploy Azure Resources Only
+# ------------------------------------------------------------------------------------------------------------------------
+# You need to set up secrets in the GitHub Secrets Repository before running these workflows.
+#   See Docs\CreateGitHubSecrets\.md for details
+# ------------------------------------------------------------------------------------------------------------------------
+name: template.dnf.bicep.infra
+run-name: Deploy Infra
+on:
+  workflow_call:
+    inputs:
+      envCode:
+        required: true
+        type: string
+
+# ------------------------------------------------------------------------------------------------------------------------
+jobs:
+  deploy:
+    name: Create Infra
+    runs-on: ubuntu-latest  #windows-latest
+    environment:
+      name: ${{ inputs.envCode }}
+    
+    env:
+      generatedAppEnvName: ${{ vars.APP_NAME }}-${{ inputs.envCode }}
+      generatedResourceGroupName: ${{ vars.RESOURCE_GROUP_PREFIX }}_${{ inputs.envCode }}
+
+    steps:
+    - name: Display Variables
+      run: |-
+        echo "generatedAppEnvName=${{ env.generatedAppEnvName }}"
+        echo "generatedResourceGroupName=${{ env.generatedResourceGroupName }}"
+        echo "environmentCode=${{ inputs.envCode }}"
+        echo "location=${{ vars.AZURE_LOCATION }}"
+        echo "appName=${{ vars.APP_NAME }}"
+        echo "appSwaggerEnabled=${{ vars.APP_SWAGGER_ENABLED }}"
+        echo "databaseName=${{ vars.DATABASE_NAME }}"
+        echo "keyVaultOwnerUserId=${{ vars.KEYVAULT_OWNER_USERID }}"
+        echo "sqlSkuFamily=${{ vars.SQL_SKU_FAMILY }}"
+        echo "sqlSkuName=${{ vars.SQL_SKU_NAME }}"
+        echo "sqlSkuTier=${{ vars.SQL_SKU_TIER }}"
+        echo "storageSku=${{ vars.STORAGE_SKU }}"
+        echo "webSiteSku=${{ vars.WEBSITE_SKU }}"
+        echo "Pipeline Workspace Directory Contents:"
+        tree ${{ env.GITHUB_ACTION_PATH }}
+      continue-on-error: true
+
+    - name: Checkout Code
+      uses: actions/checkout@main
+
+    - name: List Files
+      run: 
+        tree ${{ env.GITHUB_ACTION_PATH }}
+      continue-on-error: true
+
+    - name: Log into Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Create Resource Group
+      run: 
+        az group create --name ${{ env.generatedResourceGroupName }} --location ${{ vars.AZURE_LOCATION }} --tags Environment=${{ inputs.envCode }} Application=${{ vars.APP_NAME }}
+
+    - name: Deploy Azure Resources
+      uses: azure/arm-deploy@v1
+      with:
+        scope: resourcegroup
+        resourceGroupName: ${{ env.generatedResourceGroupName }}
+        template: infra/Bicep/main.bicep
+        parameters: >
+          environmentCode=${{ inputs.envCode }}
+          location=${{ vars.AZURE_LOCATION }}
+          appName=${{ vars.APP_NAME }}
+          databaseName=${{ vars.DATABASE_NAME }}
+          sqlSkuFamily=${{ vars.SQL_SKU_FAMILY }}
+          sqlSkuName=${{ vars.SQL_SKU_NAME }}
+          sqlSkuTier=${{ vars.SQL_SKU_TIER }}
+          adminLoginTenantId=${{ vars.SQL_ADMIN_TENANTID }}
+          adminLoginUserId=${{ vars.SQL_ADMIN_USERID }}
+          adminLoginUserSid=${{ vars.SQL_ADMIN_USERSID }}
+          appSwaggerEnabled=${{ vars.APP_SWAGGER_ENABLED }}
+          keyVaultOwnerUserId=${{ vars.KEYVAULT_OWNER_USERID }}
+          storageSku=${{ vars.STORAGE_SKU }}
+          webSiteSku=${{ vars.WEBSITE_SKU }}
+          adDomain=${{ vars.AZURE_AD_DOMAIN }}
+          adTenantId=${{ vars.AZURE_AD_CLIENTID }}
+          adClientId=${{ vars.AZURE_AD_TENANTID }}

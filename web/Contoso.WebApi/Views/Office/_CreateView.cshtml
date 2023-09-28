@@ -1,0 +1,30 @@
+@model Contoso.WebApi.Data.Tbl_DimOffice
+
+<table>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeName, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeName)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeName)@Html.ValidationMessageFor(model => model.OfficeName)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeAddress, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeAddress)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeAddress)@Html.ValidationMessageFor(model => model.OfficeAddress)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeCity, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeCity)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeCity)@Html.ValidationMessageFor(model => model.OfficeCity)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeState, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeState)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeState)@Html.ValidationMessageFor(model => model.OfficeState)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeZip, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeZip)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeZip)@Html.ValidationMessageFor(model => model.OfficeZip)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeCountry, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeCountry)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeCountry)@Html.ValidationMessageFor(model => model.OfficeCountry)</div></td>
+  </tr>
+
+</table>
+

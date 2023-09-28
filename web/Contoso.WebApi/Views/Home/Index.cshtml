@@ -1,0 +1,31 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+<main>
+	<section class="row" aria-labelledby="homePageTitle">
+		<h1 id="aspnetTitle">Contoso Room Reservations Admin App</h1>
+	</section>
+	@if (Request.IsAuthenticated)
+	{
+		<div class="row">
+			<section class="col-md-4" aria-labelledby="officeTitle">
+				@Html.ActionLink("Office List", "Index", "Office", null, new { @class = "btn btn-primary" })
+			</section>
+			<section class="col-md-4" aria-labelledby="roomTitle">
+				@Html.ActionLink("Room List", "Index", "Room", null, new { @class = "btn btn-primary" })
+			</section>
+			<section class="col-md-4" aria-labelledby="eventTitle">
+				@Html.ActionLink("Event List", "Index", "Event", null, new { @class = "btn btn-primary" })
+			</section>
+		</div>
+	}
+	else
+	{
+		<div class="row">
+			<section class="col-md-4" aria-labelledby="login">
+				@Html.ActionLink("Sign in", "SignIn", "Account", null, new { @class = "btn btn-primary" })
+			</section>
+		</div>
+	}
+</main>

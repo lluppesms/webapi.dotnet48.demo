@@ -1,0 +1,44 @@
+### --------------------------------------------------------------------------------
+### Test harness for Room APIs
+### --------------------------------------------------------------------------------
+@baseUrl = https://localhost:44323/api
+
+### Get List of Rooms ------------------------------------------------------------
+GET {{baseUrl}}/room/list
+
+### Get One Room Record ----------------------------------------------------------
+@roomId = 2
+GET {{baseUrl}}/room/{{roomId}}
+
+### Create New Room Record -------------------------------------------------------
+@officeId = 2
+POST {{baseUrl}}/room
+content-type: text/json
+
+{
+  "officeId": {{officeId}},
+  "name": "Room Unit Test 22"
+}
+
+### Get List of Rooms
+GET {{baseUrl}}/room/list
+
+### Update existing Room Record --------------------------------------------------
+@newRoomId = 17
+PUT {{baseUrl}}/room
+content-type: text/json
+
+{
+  "id": {{newRoomId}},
+  "officeId": {{officeId}},
+  "name": "Room Unit Test 22B"
+}
+
+### Get List of Rooms
+GET {{baseUrl}}/room/list
+
+### Delete newly added Room Record -----------------------------------------------
+DELETE {{baseUrl}}/room/{{newRoomId}}
+
+### Get List of Rooms
+GET {{baseUrl}}/room/list

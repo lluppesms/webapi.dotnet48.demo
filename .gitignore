@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+infra/Bicep/Run_Deploy_Locally.ps1
+/web/Contoso.WebApi/App_Data/secrets.xml

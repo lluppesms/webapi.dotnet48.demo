@@ -1,0 +1,17 @@
+@model Contoso.WebApi.Data.Tbl_DimRoom
+<table>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.RoomID, ViewData).Description)">@Html.LabelFor(m => m.RoomID)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.RoomID)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeID, ViewData).Description)">@Html.LabelFor(m => m.OfficeID)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeID)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.RoomName, ViewData).Description)">@Html.LabelFor(m => m.RoomName)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.RoomName)</td>
+  </tr>
+
+</table>
+

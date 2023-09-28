@@ -1,0 +1,6 @@
+@model IEnumerable<Contoso.WebApi.Data.Tbl_FactEvent>
+
+@foreach (var Tbl_FactEvent in Model)
+{
+    <li><a href="@Url.Action("Details", new { id = Tbl_FactEvent.EventID })" >@Tbl_FactEvent.EventName</a></li>
+}

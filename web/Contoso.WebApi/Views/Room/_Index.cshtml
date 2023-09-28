@@ -1,0 +1,6 @@
+@model IEnumerable<Contoso.WebApi.Data.Tbl_DimRoom>
+
+@foreach (var Tbl_DimRoom in Model)
+{
+    <li><a href="@Url.Action("Details", new { id = Tbl_DimRoom.RoomID })" >@Tbl_DimRoom.RoomName</a></li>
+}

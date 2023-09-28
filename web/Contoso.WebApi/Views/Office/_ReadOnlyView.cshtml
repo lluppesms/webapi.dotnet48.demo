@@ -1,0 +1,33 @@
+@model Contoso.WebApi.Data.Tbl_DimOffice
+<table>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeID, ViewData).Description)">@Html.LabelFor(m => m.OfficeID)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeID)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeName, ViewData).Description)">@Html.LabelFor(m => m.OfficeName)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeName)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeAddress, ViewData).Description)">@Html.LabelFor(m => m.OfficeAddress)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeAddress)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeCity, ViewData).Description)">@Html.LabelFor(m => m.OfficeCity)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeCity)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeState, ViewData).Description)">@Html.LabelFor(m => m.OfficeState)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeState)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeZip, ViewData).Description)">@Html.LabelFor(m => m.OfficeZip)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeZip)</td>
+  </tr>
+  <tr>
+    <td class="tdEditLabel" title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeCountry, ViewData).Description)">@Html.LabelFor(m => m.OfficeCountry)</td>
+    <td class="tdEditCell" >@Html.DisplayFor(m => m.OfficeCountry)</td>
+  </tr>
+
+</table>
+

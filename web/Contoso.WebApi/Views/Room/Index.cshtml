@@ -1,0 +1,11 @@
+@model IEnumerable<Contoso.WebApi.Data.Tbl_DimRoom>
+
+<div>
+	<h2>@ViewBag.Title</h2>
+	<span style="color: Red; font-weight: bold;">@ViewBag.Message</span>
+	<ul>
+		@Html.Partial("_Index", Model)
+	</ul>
+	<br />
+	@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</div>

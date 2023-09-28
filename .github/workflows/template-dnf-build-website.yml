@@ -1,0 +1,80 @@
+# ------------------------------------------------------------------------------------------------------------------------
+# GHA Reusable Called Workflow to build a Website App
+# ------------------------------------------------------------------------------------------------------------------------
+# You need to set up secrets in the GitHub Secrets Repository before running these workflows.
+#   See readme.md for details
+# ------------------------------------------------------------------------------------------------------------------------
+name: template.dnf.build.website
+run-name: Build Website App
+on:
+  workflow_call:
+    inputs:
+      envCode:
+        required: true
+        type: string
+      rootDirectory:
+        required: true
+        type: string
+      packagesDirectory:
+        required: true
+        type: string
+      projectName:
+        required: true
+        type: string
+      listFilesAfterBuild:
+        required: false
+        type: boolean
+        default: false
+      artifactName: 
+        type: string
+        default: ApiSolutionBundle
+      packagePath:
+        type: string
+        default: drop
+
+# ------------------------------------------------------------------------------------------------------------------------
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    environment:
+      name: ${{ inputs.envCode }}
+
+    env:
+      CONFIGURATION: Release
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+
+    - name: Create Build Directory
+      run: mkdir ${{ inputs.packagePath }}
+
+    - name: Restore Packages
+      run: nuget restore "${{ inputs.rootDirectory }}\packages.config" -PackagesDirectory ${{ inputs.packagesDirectory }}
+
+    - name: List All Files
+      if: inputs.listFilesAfterBuild == true
+      run: 
+        tree ${{ env.GITHUB_ACTION_PATH }} /f /a
+
+    - name: Build Solution
+      run: |
+        msbuild.exe "${{ inputs.rootDirectory }}\${{ inputs.projectName }}" /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:configuration="${{ env.CONFIGURATION }}" /p:PublishUrl="${{ inputs.packagePath }}"
+
+    - name: Save Publish Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.artifactName }}
+        path: ${{ inputs.rootDirectory }}\${{ inputs.packagePath }}
+
+    - name: List All Files
+      if: inputs.listFilesAfterBuild == true
+      run: 
+        tree ${{ env.GITHUB_ACTION_PATH }} /f /a

@@ -1,0 +1,41 @@
+# ------------------------------------------------------------------------------------------------------------------------
+# GHA Workflow to deploy Azure Resources Only
+# ------------------------------------------------------------------------------------------------------------------------
+# You need to set up secrets in the GitHub Secrets Repository before running these workflows.
+#   See readme.md for details
+# ------------------------------------------------------------------------------------------------------------------------
+name: deploy.dnf.infra.bicep
+on: 
+  workflow_dispatch:
+    inputs:
+      securityScan:
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - true
+          - false
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning' 
+        type: choice
+        options:
+          - info
+          - warning
+          - debug 
+
+jobs:
+# ------------------------------------------------------------------------------------------------------------------------
+  scan-code:
+    name: Scan Source Code
+    if: inputs.securityScan == 'true'
+    uses: ./.github/workflows/template-security-scan.yml
+
+# ------------------------------------------------------------------------------------------------------------------------
+  infra-dev:
+    name: Create DEV Infra
+    uses: ./.github/workflows/template-dnf-infra-bicep.yml
+    secrets: inherit
+    with:
+      envCode: 'dev'

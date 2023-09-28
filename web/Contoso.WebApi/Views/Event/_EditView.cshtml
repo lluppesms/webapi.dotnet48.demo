@@ -1,0 +1,27 @@
+@model Contoso.WebApi.Data.Tbl_FactEvent
+
+<table>
+  <input type="hidden" name="EventID" id="EventID" value="@Model.EventID">
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.RoomID, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.RoomID)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.RoomID)@Html.ValidationMessageFor(model => model.RoomID)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventName, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.EventName)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.EventName)@Html.ValidationMessageFor(model => model.EventName)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventOwner, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.EventOwner)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.EventOwner)@Html.ValidationMessageFor(model => model.EventOwner)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventStartDateTime, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.EventStartDateTime)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.EventStartDateTime)@Html.ValidationMessageFor(model => model.EventStartDateTime)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.EventEndDateTime, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.EventEndDateTime)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.EventEndDateTime)@Html.ValidationMessageFor(model => model.EventEndDateTime)</div></td>
+  </tr>
+
+</table>
+

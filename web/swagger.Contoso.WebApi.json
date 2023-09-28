@@ -1,0 +1,679 @@
+// Generated on Sept 22, 2023 5:40 PM
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Contoso.WebAPI"
+    },
+    "host": "localhost:44323",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/api/event/list": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/event/room/{id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_GetEventsForOneRoom",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/event/{id}": {
+            "get": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_GetEvent",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_DeleteEvent",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/event": {
+            "put": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_PutEvent",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_FactEvent",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_FactEvent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Event"
+                ],
+                "operationId": "Event_PostEvent",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_FactEvent",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_FactEvent"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/office/list": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/office/{id}": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_GetOffice",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_DeleteOffice",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/office/details/{id}": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_GetOfficeDetails",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/office/rooms/{id}": {
+            "get": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_GetOfficeRooms",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/office": {
+            "put": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_PutOffice",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_DimOffice",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_DimOffice"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Office"
+                ],
+                "operationId": "Office_PostOffice",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_DimOffice",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_DimOffice"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/room/List": {
+            "get": {
+                "tags": [
+                    "Room"
+                ],
+                "operationId": "Room_Get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/room/{id}": {
+            "get": {
+                "tags": [
+                    "Room"
+                ],
+                "operationId": "Room_GetRoom",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Room"
+                ],
+                "operationId": "Room_DeleteRoom",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/room": {
+            "put": {
+                "tags": [
+                    "Room"
+                ],
+                "operationId": "Room_PutRoom",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_DimRoom",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_DimRoom"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Room"
+                ],
+                "operationId": "Room_PostRoom",
+                "consumes": [
+                    "application/json",
+                    "text/json",
+                    "text/xml",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "text/json",
+                    "text/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "tbl_DimRoom",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Tbl_DimRoom"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Tbl_FactEvent": {
+            "required": [
+                "id",
+                "name",
+                "owner",
+                "startDateTime",
+                "endDateTime"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "roomId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "owner": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "startDateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "endDateTime": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "Tbl_DimOffice": {
+            "required": [
+                "id",
+                "name",
+                "address",
+                "city",
+                "state",
+                "zipcode",
+                "country"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "address": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "city": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "state": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "zipcode": {
+                    "maxLength": 10,
+                    "minLength": 0,
+                    "type": "string"
+                },
+                "country": {
+                    "maxLength": 100,
+                    "minLength": 0,
+                    "type": "string"
+                }
+            }
+        },
+        "Tbl_DimRoom": {
+            "required": [
+                "id",
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "officeId": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "name": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

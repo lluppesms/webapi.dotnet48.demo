@@ -1,0 +1,20 @@
+@model Contoso.WebApi.Data.Tbl_DimOffice
+
+@{
+}
+<div style="padding: 20px;">
+    <div class="tdTitleCell"><h2><a href="@Url.Action("Index")"><i class="fa fa-arrow-circle-o-left" style="color: black; text-decoration: none; margin-top: 8px;" title="Go Back"></i></a> @ViewBag.Title</h2></div>
+
+    @Html.Partial("_ReadOnlyView", Model)
+    <table>
+        <tr>
+            <td class="editor-field">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.OfficeID }, new { @class = "btn btn-primary" })
+            </td>
+            <td class="editor-field">
+                @Html.ActionLink("Delete", "Delete", new { id = Model.OfficeID }, new { @class = "btn btn-default" })
+            </td>
+        </tr>
+    </table>
+
+</div>

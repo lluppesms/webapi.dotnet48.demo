@@ -1,0 +1,34 @@
+﻿@{
+	ViewBag.Title = "Diagnostics Menu";
+	var isAdmin = false;
+	if (ViewBag.IsAdmin != null) { isAdmin = ViewBag.IsAdmin; }
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default panel-danger">
+			<div class="panel-heading text-left">Diagnostics</div>
+			<div class="panel-body text-left">
+				<ul style="padding-left: 0; list-style: none; font-size: 0.8em;">
+					<li>User Name: @ViewBag.UserName</li>
+					<li>Program Version: @ViewBag.VersionNumber</li>
+					@if (isAdmin)
+					{
+						<li>Compiled: @ViewBag.VersionDateUTC</li>
+						<li>Database: @ViewBag.Connection</li>
+						<li>Server: @Environment.MachineName</li>
+					}
+
+					<li>AD Tenant: @ViewBag.AdTenantId</li>
+					<li>AD Client: @ViewBag.AdClientId</li>
+					<li>AD Instance: @ViewBag.AdInstance</li>
+					<li>AD Domain: @ViewBag.AdDomain </li>
+					<li>AD Logout: @ViewBag.AdLogoutUri </li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

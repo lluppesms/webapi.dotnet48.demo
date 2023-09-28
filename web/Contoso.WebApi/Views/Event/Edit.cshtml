@@ -1,0 +1,20 @@
+@model Contoso.WebApi.Data.Tbl_FactEvent
+
+@{
+}
+
+<div style="padding: 20px;">
+    <div class="tdTitleCell"><h2>@ViewBag.Title</h2></div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.Partial("_EditView", Model)
+        <table>
+            <tr>
+                <td class="editor-field"><input type="submit" class="btn btn-primary" value="Save" /></td>
+                <td class="editor-field"><input type="button" class="btn btn-default" value="Cancel" onclick="window.location.href='@Url.Action("Details", new { id = Model.EventID })';" /></td>
+            </tr>
+        </table>
+    }
+</div>

@@ -1,0 +1,15 @@
+@model Contoso.WebApi.Data.Tbl_DimRoom
+
+<table>
+  <input type="hidden" name="RoomID" id="RoomID" value="@Model.RoomID">
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.OfficeID, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.OfficeID)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.OfficeID)@Html.ValidationMessageFor(model => model.OfficeID)</div></td>
+  </tr>
+  <tr>
+    <td nowrap title="@Html.Raw(ModelMetadata.FromLambdaExpression(m => m.RoomName, ViewData).Description)"><div class="editor-label">@Html.LabelFor(m => m.RoomName)</div></td>
+    <td><div class="editor-field">@Html.EditorFor(model => model.RoomName)@Html.ValidationMessageFor(model => model.RoomName)</div></td>
+  </tr>
+
+</table>
+
