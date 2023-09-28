@@ -59,9 +59,7 @@ namespace Contoso.WebApi
 				if (!isAdmin)
 				{
 					isAdmin =
-						(identity.Name.ToLower().Contains("lyle") && identity.Name.ToLower().Contains("luppes")) ||
-						(identity.Name.ToLower().Contains("ryan") && identity.Name.ToLower().Contains("pfalz")) ||
-						(identity.Name.ToLower().Contains("brian") && identity.Name.ToLower().Contains("cheng"));
+						(identity.Name.ToLower().Contains("lyle") && identity.Name.ToLower().Contains("luppes"));
 				}
 				return isAdmin;
 			}

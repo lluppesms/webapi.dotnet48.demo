@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="_BaseAPIController.cs" company="Contoso, Inc.">
-// Copyright 2023, Contoso, Inc. All rights reserved.
+// <copyright file="_BaseAPIController.cs" company="Luppes Consulting, Inc.">
+// Copyright 2023, Luppes Consulting, Inc. All rights reserved.
 // </copyright>
 // <summary>
 // Base API Controller

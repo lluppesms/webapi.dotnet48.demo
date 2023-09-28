@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Contoso.WebApi")]
-[assembly: AssemblyCopyright("Copyright © Contoso 2023")]
+[assembly: AssemblyCopyright("Copyright © Luppes Consulting 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

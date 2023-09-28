@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="ITbl_DimOfficeRepository.cs" company="Contoso, Inc.">
-// Copyright 2023, Contoso, Inc. All rights reserved.
+// <copyright file="ITbl_DimOfficeRepository.cs" company="Luppes Consulting, Inc.">
+// Copyright 2023, Luppes Consulting, Inc. All rights reserved.
 // </copyright>
 // <summary>
 // Tbl_DimOffice Interface

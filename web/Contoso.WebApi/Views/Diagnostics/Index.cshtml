@@ -13,20 +13,18 @@
 			<div class="panel-body text-left">
 				<ul style="padding-left: 0; list-style: none; font-size: 0.8em;">
 					<li>User Name: @ViewBag.UserName</li>
-					<li>Program Version: @ViewBag.VersionNumber</li>
 					@if (isAdmin)
 					{
+						<li>Program Version: @ViewBag.VersionNumber</li>
 						<li>Compiled: @ViewBag.VersionDateUTC</li>
 						<li>Database: @ViewBag.Connection</li>
 						<li>Server: @Environment.MachineName</li>
+						<li>AD Tenant: @ViewBag.AdTenantId</li>
+						<li>AD Client: @ViewBag.AdClientId</li>
+						<li>AD Instance: @ViewBag.AdInstance</li>
+						<li>AD Domain: @ViewBag.AdDomain </li>
+						<li>AD Logout: @ViewBag.AdLogoutUri </li>
 					}
-
-					<li>AD Tenant: @ViewBag.AdTenantId</li>
-					<li>AD Client: @ViewBag.AdClientId</li>
-					<li>AD Instance: @ViewBag.AdInstance</li>
-					<li>AD Domain: @ViewBag.AdDomain </li>
-					<li>AD Logout: @ViewBag.AdLogoutUri </li>
-
 				</ul>
 			</div>
 		</div>

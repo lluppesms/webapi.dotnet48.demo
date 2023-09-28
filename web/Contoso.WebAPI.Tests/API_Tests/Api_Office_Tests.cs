@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="Api_Tbl_DimOffice_Tests.cs" company="Contoso, Inc.">
-//   Copyright © 2017 Contoso, Inc.
+// <copyright file="Api_Tbl_DimOffice_Tests.cs" company="Luppes Consulting, Inc.">
+//   Copyright © 2023  Luppes Consulting, Inc.
 // </copyright>
 // <summary>
 //   Tbl_DimOffice API Test Cases

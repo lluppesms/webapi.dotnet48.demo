@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------
-// <copyright file="SampleData_Tbl_DimRoom.cs" company="Contoso, Inc.">
-//   Copyright © 2017 Contoso, Inc.
+// <copyright file="SampleData_Tbl_DimRoom.cs" company="Luppes Consulting, Inc.">
+//   Copyright © 2023  Luppes Consulting, Inc.
 // </copyright>
 // <summary>
 // Sample Data for Tbl_DimRoom
