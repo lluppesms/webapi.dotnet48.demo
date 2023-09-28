@@ -41,7 +41,9 @@ These GitHub actions are currently all set to manually deploy. Once you are read
 
 ## Additional Step: SQL Server Setup
 
-    Note: I haven't got all of the SQL database setup automated yet, but it's just a one-time step once you have a SQL server deployed. At some point, I'll automate this, just ran out of time this week...!
+    Note: I haven't got all of the SQL database setup automated yet, 
+    but it's just a one-time step once you have a SQL server deployed. 
+    At some point, I'll automate this, just ran out of time this week...!
 
 ### To Grant Access to the Web App's Managed Identity
 
