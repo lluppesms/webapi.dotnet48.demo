@@ -133,7 +133,9 @@ namespace Contoso.WebApi.Controllers
 			if (msg.StartsWith("Thread was being aborted") || msg.EndsWith("Thread was being aborted") ||
 				msg.EndsWith("Thread was being aborted."))
 			{
-				System.Diagnostics.Trace.TraceError(msg);
+				// Remove line breaks to prevent log injection
+				// See https://owasp.org/www-community/attacks/Log_Injection
+				System.Diagnostics.Trace.TraceError(msg.Replace(Environment.NewLine, ""));
 				return;
 			}
 
