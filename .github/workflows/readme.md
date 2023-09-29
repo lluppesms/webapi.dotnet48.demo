@@ -8,19 +8,15 @@ The GitHub workflows in this project require several secrets set at the reposito
 
 You need to set up the Azure Credentials secret in the GitHub Secrets at the Repository level before you do anything else.
 
-See https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions for more info.
+See [https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-github-actions) for more info.
 
-It should look something like this:
-
-AZURE_CREDENTIALS:
+The commands to set these variables should look something like this:
 
 ``` bash
-{
-  "clientId": "<GUID>", 
-  "clientSecret": "<GUID>", 
-  "subscriptionId": "<GUID>", 
-  "tenantId": "<GUID>"
-}
+gh secret set AZURE_CLIENT_ID -b <GUID>
+gh secret set AZURE_CLIENT_SECRET -b <value>
+gh secret set AZURE_SUBSCRIPTION_ID -b <GUID>
+gh secret set AZURE_TENANT_ID -b <GUID>
 ```
 
 ---
