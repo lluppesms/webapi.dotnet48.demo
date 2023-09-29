@@ -15,7 +15,9 @@
 					<li>User Name: @ViewBag.UserName</li>
 					@if (isAdmin)
 					{
-						<li>Program Version: @ViewBag.VersionNumber</li>
+						<li>Build Info: @ViewBag.BuildInfoFile</li>
+						<li>Program Build: @ViewBag.BuildNumber</li>
+						<li>Build Deployed: @ViewBag.BuildDate</li>
 						<li>Compiled: @ViewBag.VersionDateUTC</li>
 						<li>Database: @ViewBag.Connection</li>
 						<li>Server: @Environment.MachineName</li>

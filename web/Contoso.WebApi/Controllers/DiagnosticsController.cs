@@ -7,8 +7,11 @@
 // </summary>
 //-----------------------------------------------------------------------
 
+using Contoso.WebApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Configuration;
+using System.IO;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
@@ -37,21 +40,34 @@ namespace Contoso.WebApi.Controllers
 				var userLoc = connectString.IndexOf("User", StringComparison.Ordinal);
 				if (userLoc > 0)
 				{
-					connectString = connectString.Substring(0, userLoc);
+					connectString = connectString.Substring(0, userLoc) + "...";
 				}
 				ViewBag.Connection = connectString;
 			}
 
-			var adTenantId = ConfigurationManager.AppSettings["AzureAD__TenantId"];
-			ViewBag.AdTenantId = adTenantId != null && adTenantId.Length > 6 ? adTenantId.Substring(0, 5) + "..." : adTenantId;
-			var adClientId = ConfigurationManager.AppSettings["AzureAD__ClientId"];
-			ViewBag.AdClientId = adClientId != null && adClientId.Length > 6 ? adClientId.Substring(0, 5) + "..." : adClientId;
-			var adInstance = ConfigurationManager.AppSettings["AzureAD__AADInstance"];
-			ViewBag.AdInstance = adInstance;
-			var adDomain = ConfigurationManager.AppSettings["AzureAD__Domain"];
-			ViewBag.AdDomain = adDomain;
-			var adLogoutUri = ConfigurationManager.AppSettings["AzureAD__PostLogoutRedirectUri"];
-			ViewBag.AdLogoutUri= adLogoutUri;
+			//var assembly = Assembly.GetExecutingAssembly();
+			//var fileInfo2 = new System.IO.FileInfo(assembly.Location);
+			//var assemblyPath = fileInfo.DirectoryName;
+			//var buildInfoFile = Path.Combine(assemblyPath, "buildinfo.json");
+			var buildInfoFile = Server.MapPath("\\buildinfo.json");
+			ViewBag.BuildInfoFile = buildInfoFile;
+			//var buildInfoFile = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "buildinfo.json");
+			if (System.IO.File.Exists(buildInfoFile))
+			{
+				using (var r = new StreamReader(buildInfoFile))
+				{
+					var buildInfoData = r.ReadToEnd();
+					var buildInfoObject = JsonConvert.DeserializeObject<BuildInfo>(buildInfoData);
+					ViewBag.BuildNumber = buildInfoObject.BuildNumber;
+					ViewBag.BuildDate = buildInfoObject.BuildDate;
+				}
+			}
+
+			ViewBag.AdTenantId = ConfigurationManager.AppSettings["AzureAD__TenantId"];
+			ViewBag.AdClientId = ConfigurationManager.AppSettings["AzureAD__ClientId"];
+			ViewBag.AdInstance = ConfigurationManager.AppSettings["AzureAD__AADInstance"];
+			ViewBag.AdDomain = ConfigurationManager.AppSettings["AzureAD__Domain"];
+			ViewBag.AdLogoutUri= ConfigurationManager.AppSettings["AzureAD__PostLogoutRedirectUri"];
 
 			return View();
 		}
