@@ -84,14 +84,18 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
 
     - name: Create Build Directory
-      run: mkdir \web\packages
+      run: mkdir web\packages
+
+    - name: List All Files
+      run: 
+        tree /f /a
 
     - name: Restore Packages
-      run: nuget restore \web\Contoso.WebApi\packages.config -PackagesDirectory \web\packages
+      run: nuget restore web\Contoso.WebApi\packages.config -PackagesDirectory web\packages
 
     - name: Build Solution
       run: |
-        msbuild.exe \web\Contoso.WebApi\Contoso.WebApi.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:configuration=RELEASE /p:PublishUrl=drop
+        msbuild.exe web\Contoso.WebApi\Contoso.WebApi.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:configuration=RELEASE /p:PublishUrl=drop
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
