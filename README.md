@@ -4,6 +4,12 @@ This repo contains an example of deploying a .NET Framework 4.8 MVC/WebAPI app t
 
 ---
 
+## Disclaimers
+
+This demo does not put the storage, key vault, and SQL Server into a VNET with a private endpoint, which is should do for security sake. To keep things simple, that has been left out and is an exercise for the reader.
+
+---
+
 ## Feature Demo: SQL Database Access via Managed Identity
 
 The web application shows an example of using Entity Framework to access the database with the Azure Web Application's Managed Identity so there is no secret information in the connection strings. See the constructor in the [DatabaseEntities.cs](/web/Contoso.WebApi/Models/DatabaseEntities.cs) for an example of what needs to be done in order to enable this, which adds these lines to the constructor:
@@ -60,3 +66,7 @@ Run the [/database/UpdateSecurity.sql](/database/UpdateSecurity.sql) script to g
 ### Create the demo tables and data
 
 Run the [/database/CreateDatabaseAndData.sql](/database/CreateDatabaseAndData.sql) script to create the tables and data. If you run the script multiple times, it will detect that the tables and/or data exists and will skip over those steps.
+
+### Open the Firewall Rules
+
+In the database networking settings, the "Allow Azure services and resources" checkbox needs to be manually enabled. At some point, this could be set in the Bicep files, but it's not there yet.

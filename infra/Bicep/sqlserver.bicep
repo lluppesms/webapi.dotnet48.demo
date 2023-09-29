@@ -35,7 +35,7 @@ var adminDefinition = adAdminUserId == '' ? {} : {
 var primaryUser =  adAdminUserId == '' ? '' : adAdminUserId
 
 // --------------------------------------------------------------------------------
-resource sqlServerResource 'Microsoft.Sql/servers@2022-05-01-preview' = {
+resource sqlServerResource 'Microsoft.Sql/servers@2023-02-01-preview' = {
   name: sqlServerName
   location: location
   tags: tags
@@ -43,7 +43,7 @@ resource sqlServerResource 'Microsoft.Sql/servers@2022-05-01-preview' = {
     administrators: adminDefinition
     primaryUserAssignedIdentityId: primaryUser
     minimalTlsVersion: '1.2'
-    publicNetworkAccess: 'Disabled'
+    publicNetworkAccess: 'Disabled' // 'Enabled'  --> set this when AllowAzureIps is working
     restrictOutboundNetworkAccess: 'Enabled'
     version: '12.0'
     // administratorLogin: sqldbAdminUserId
@@ -79,6 +79,12 @@ resource sqlDBResource 'Microsoft.Sql/servers/databases@2022-05-01-preview' = {
     isLedgerOn: false
   }
 }
+
+// Need to do something like this, but this syntax is not working...!
+// resource sqlServerResourceAllowAzureIps 'Microsoft.Sql/servers/firewallRules@2023-02-01-preview' = {
+//   parent: sqlServerResource
+//   name: 'AllowAllWindowsAzureIps'
+// }
 
 // --------------------------------------------------------------------------------
 output serverName string = sqlServerResource.name
