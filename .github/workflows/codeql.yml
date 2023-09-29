@@ -36,6 +36,12 @@ jobs:
       contents: read
       security-events: write
 
+    env:
+      PACKAGEPATH: web\packages
+      ROOTDIRECTORY: web\Contoso.WebApi\
+      PROJECTNAME: Contoso.WebApi.csproj
+      CONFIGURATION: Release
+
     strategy:
       fail-fast: false
       matrix:
@@ -84,18 +90,18 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
 
     - name: Create Build Directory
-      run: mkdir web\packages
+      run: mkdir ${{ env.PACKAGEPATH }}
 
     - name: List All Files
       run: 
         tree /f /a
 
     - name: Restore Packages
-      run: nuget restore web\Contoso.WebApi\packages.config -PackagesDirectory web\packages
+      run: nuget restore ${{ env.ROOTDIRECTORY }}packages.config -PackagesDirectory ${{ env.PACKAGEPATH }}
 
     - name: Build Solution
       run: |
-        msbuild.exe web\Contoso.WebApi\Contoso.WebApi.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:configuration=RELEASE /p:PublishUrl=drop
+        msbuild.exe ${{ env.ROOTDIRECTORY }}${{ env.PROJECTNAME }} /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:configuration="${{ env.CONFIGURATION }}" /p:PublishUrl="${{ env.PACKAGEPATH }}"
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
