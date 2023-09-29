@@ -45,13 +45,8 @@ namespace Contoso.WebApi.Controllers
 				ViewBag.Connection = connectString;
 			}
 
-			//var assembly = Assembly.GetExecutingAssembly();
-			//var fileInfo2 = new System.IO.FileInfo(assembly.Location);
-			//var assemblyPath = fileInfo.DirectoryName;
-			//var buildInfoFile = Path.Combine(assemblyPath, "buildinfo.json");
 			var buildInfoFile = Server.MapPath("\\buildinfo.json");
 			ViewBag.BuildInfoFile = buildInfoFile;
-			//var buildInfoFile = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "buildinfo.json");
 			if (System.IO.File.Exists(buildInfoFile))
 			{
 				using (var r = new StreamReader(buildInfoFile))
@@ -63,8 +58,14 @@ namespace Contoso.WebApi.Controllers
 				}
 			}
 
-			ViewBag.AdTenantId = ConfigurationManager.AppSettings["AzureAD__TenantId"];
-			ViewBag.AdClientId = ConfigurationManager.AppSettings["AzureAD__ClientId"];
+			//ViewBag.AdTenantId = ConfigurationManager.AppSettings["AzureAD__TenantId"];
+			//ViewBag.AdClientId = ConfigurationManager.AppSettings["AzureAD__ClientId"];
+
+			var adTenantId = ConfigurationManager.AppSettings["AzureAD__TenantId"];
+			ViewBag.AdTenantId = adTenantId != null && adTenantId.Length > 6 ? adTenantId.Substring(0, 5) + "..." : adTenantId;
+			var adClientId = ConfigurationManager.AppSettings["AzureAD__ClientId"];
+			ViewBag.AdClientId = adClientId != null && adClientId.Length > 6 ? adClientId.Substring(0, 5) + "..." : adClientId;
+
 			ViewBag.AdInstance = ConfigurationManager.AppSettings["AzureAD__AADInstance"];
 			ViewBag.AdDomain = ConfigurationManager.AppSettings["AzureAD__Domain"];
 			ViewBag.AdLogoutUri= ConfigurationManager.AppSettings["AzureAD__PostLogoutRedirectUri"];
