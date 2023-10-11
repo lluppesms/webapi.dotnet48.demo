@@ -7,13 +7,15 @@
 // </summary>
 //-----------------------------------------------------------------------
 using Newtonsoft.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.Models
 {
-	/// <summary>
-	/// Build Info
-	/// </summary>
-	public class BuildInfo
+    /// <summary>
+    /// Build Info
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class BuildInfo
 	{
 		/// <summary>
 		/// Build Date

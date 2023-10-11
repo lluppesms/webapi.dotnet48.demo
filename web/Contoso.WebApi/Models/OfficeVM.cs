@@ -9,13 +9,15 @@
 
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.Data
 {
-	/// <summary>
-	/// Office Details VM
-	/// </summary>
-	public class OfficeDetailsVM
+    /// <summary>
+    /// Office Details VM
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class OfficeDetailsVM
     {
         /// <summary>
         /// Office ID

@@ -10,13 +10,15 @@
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.Data
 {
-	/// <summary>
-	/// Tbl_DimOffice Table
-	/// </summary>
-	[Table("Tbl_DimOffice")]
+    /// <summary>
+    /// Tbl_DimOffice Table
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    [Table("Tbl_DimOffice")]
     public class Tbl_DimOffice
     {
         /// <summary>

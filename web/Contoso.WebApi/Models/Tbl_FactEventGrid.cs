@@ -8,6 +8,7 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable once CheckNamespace
 namespace Contoso.WebApi.Data
@@ -15,6 +16,7 @@ namespace Contoso.WebApi.Data
     /// <summary>
     /// Tbl_FactEvent Grid Records
     /// </summary>
+	[ExcludeFromCodeCoverage]
     public class Tbl_FactEventGrid
     {
         /// <summary>
@@ -53,4 +55,4 @@ namespace Contoso.WebApi.Data
             Total = count;
         }
     }
-}        
+}

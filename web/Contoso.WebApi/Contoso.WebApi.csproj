@@ -253,6 +253,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\SampleDataAPIController.cs" />
     <Compile Include="API\EventAPIController.cs" />
     <Compile Include="API\OfficeAPIController.cs" />
     <Compile Include="API\RoomAPIController.cs" />
@@ -284,9 +285,11 @@
     <Compile Include="Models\Tbl_FactEvent.cs" />
     <Compile Include="Models\Tbl_FactEventGrid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Implementation\SampleDataRepository.cs" />
     <Compile Include="Repository\Implementation\Tbl_DimOfficeRepository.cs" />
     <Compile Include="Repository\Implementation\Tbl_DimRoomRepository.cs" />
     <Compile Include="Repository\Implementation\Tbl_FactEventRepository.cs" />
+    <Compile Include="Repository\Interface\ISampleDataRepository.cs" />
     <Compile Include="Repository\Interface\ITbl_DimOfficeRepository.cs" />
     <Compile Include="Repository\Interface\ITbl_DimRoomRepository.cs" />
     <Compile Include="Repository\Interface\ITbl_FactEventRepository.cs" />

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable once CheckNamespace
 namespace Contoso.WebApi.Data
@@ -19,6 +20,7 @@ namespace Contoso.WebApi.Data
     /// Tbl_DimRoom Table
     /// </summary>
     [Table("Tbl_DimRoom")]
+    [ExcludeFromCodeCoverage]
     public class Tbl_DimRoom
     {
         /// <summary>

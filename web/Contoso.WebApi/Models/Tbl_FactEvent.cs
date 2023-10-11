@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable once CheckNamespace
 namespace Contoso.WebApi.Data
@@ -18,6 +19,7 @@ namespace Contoso.WebApi.Data
     /// <summary>
     /// Tbl_FactEvent Table
     /// </summary>
+	[ExcludeFromCodeCoverage]
     [Table("Tbl_FactEvent")]
     public class Tbl_FactEvent
     {

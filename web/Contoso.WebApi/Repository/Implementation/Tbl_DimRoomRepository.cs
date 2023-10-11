@@ -108,16 +108,16 @@ namespace Contoso.WebApi.Data
             return from p in db.Tbl_DimRoom select p;
         }
 
-		/// <summary>
-		/// Find All Rooms for one Office
-		/// </summary>
-		/// <param name="requestingUserName">Requesting UserName</param>
-		/// <param name="officeId">Office Id</param>
-		/// <returns>Records</returns>
-		public IQueryable<Tbl_DimRoom> FindAllForOneOffice(string requestingUserName, int officeId)
-		{
-			return from p in db.Tbl_DimRoom where p.OfficeID == officeId select p;
-		}
+		///// <summary>
+		///// Find All Rooms for one Office
+		///// </summary>
+		///// <param name="requestingUserName">Requesting UserName</param>
+		///// <param name="officeId">Office Id</param>
+		///// <returns>Records</returns>
+		//public IQueryable<Tbl_DimRoom> FindAllForOneOffice(string requestingUserName, int officeId)
+		//{
+		//	return from p in db.Tbl_DimRoom where p.OfficeID == officeId select p;
+		//}
 
         /// <summary>
 		/// Find One Records

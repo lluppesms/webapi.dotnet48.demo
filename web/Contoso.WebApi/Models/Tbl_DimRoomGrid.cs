@@ -8,6 +8,7 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable once CheckNamespace
 namespace Contoso.WebApi.Data
@@ -15,6 +16,7 @@ namespace Contoso.WebApi.Data
     /// <summary>
     /// Tbl_DimRoom Grid Records
     /// </summary>
+	[ExcludeFromCodeCoverage]
     public class Tbl_DimRoomGrid
     {
         /// <summary>

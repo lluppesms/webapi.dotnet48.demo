@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Web.Http;
 
 namespace Contoso.WebApi
 {
-	public static class WebApiConfig
+    [ExcludeFromCodeCoverage]
+    public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {

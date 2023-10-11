@@ -9,9 +9,11 @@
 
 using System.Data.Common;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.Tests
 {
+    [ExcludeFromCodeCoverage]
     public class EffortProviderFactory : IDbConnectionFactory
     {
         private static DbConnection _connection;

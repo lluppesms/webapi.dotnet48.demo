@@ -9,6 +9,7 @@
 
 using System;
 using System.Data.Entity.Validation;
+using System.Diagnostics.CodeAnalysis;
 using System.Web;
 using System.Web.Http;
 
@@ -17,7 +18,7 @@ namespace Contoso.WebApi.API
     /// <summary>
     /// Base API Class
     /// </summary>
-    // ReSharper disable once InconsistentNaming
+	[ExcludeFromCodeCoverage]
     public class _BaseAPIController : ApiController
     {
         #region Variables

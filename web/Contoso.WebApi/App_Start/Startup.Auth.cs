@@ -4,11 +4,13 @@ using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 using System;
 using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Claims;
 
 namespace Contoso.WebApi
 {
-	public partial class Startup
+    [ExcludeFromCodeCoverage]
+    public partial class Startup
 	{
 		public void ConfigureAuth(IAppBuilder app)
 		{

@@ -18,7 +18,7 @@ namespace Contoso.WebApi.Data
 	/// <summary>
 	/// Base Repository
 	/// </summary>
-	// ReSharper disable once InconsistentNaming
+	[ExcludeFromCodeCoverage]
 	public class _BaseRepository
 	{
 		#region Variables

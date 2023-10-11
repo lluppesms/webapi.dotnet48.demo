@@ -8,12 +8,15 @@
 //-----------------------------------------------------------------------
 
 // ReSharper disable once CheckNamespace
+using System.Diagnostics.CodeAnalysis;
+
 namespace Contoso.WebApi.Data
 {
-	/// <summary>
-	/// Code Table of strings
-	/// </summary>
-	public class StaticCodeTable
+    /// <summary>
+    /// Code Table of strings
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class StaticCodeTable
 	{
 		/// <summary>
 		/// Initialize Code Table Record
@@ -37,10 +40,11 @@ namespace Contoso.WebApi.Data
 		public string CodeDscr { get; set; }
 	}
 
-	/// <summary>
-	/// Code Table of numbers
-	/// </summary>
-	public class StaticNumberTable
+    /// <summary>
+    /// Code Table of numbers
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class StaticNumberTable
 	{
 		/// <summary>
 		/// Initialize Code Table Record
@@ -64,10 +68,11 @@ namespace Contoso.WebApi.Data
 		public int CodeDscr { get; set; }
 	}
 
-	/// <summary>
-	/// Code Table of bytes
-	/// </summary>
-	public class StaticByteTable
+    /// <summary>
+    /// Code Table of bytes
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class StaticByteTable
 	{
 		/// <summary>
 		/// Initialize Code Table Record

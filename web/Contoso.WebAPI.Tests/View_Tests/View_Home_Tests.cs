@@ -1,10 +1,12 @@
 ﻿using Contoso.WebApi.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics.CodeAnalysis;
 using System.Web.Mvc;
 
 namespace Contoso.WebApi.UnitTests.Views
 {
-	[TestClass]
+    [ExcludeFromCodeCoverage]
+    [TestClass]
 	public class View_Home_Tests
 	{
 		[TestMethod]

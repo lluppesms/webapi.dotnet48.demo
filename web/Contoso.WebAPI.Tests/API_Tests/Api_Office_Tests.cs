@@ -90,27 +90,47 @@ namespace Contoso.WebApi.UnitTests.API
 			Assert.IsNotNull(data.First().OfficeName, "Data should not be null!");
 		}
 
+        /// <summary>
+        /// Tbl_DimOffice Get Rooms for One Office works
+        /// </summary>
+        [TestMethod]
+        public void API_Office_Get_Rooms_For_Office_Works()
+        {
+            // Arrange
+            // Act
+            var result = controller.GetOfficeRooms(SampleDataManager.Test_Tbl_DimOffice[0].OfficeID);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.StatusCode == HttpStatusCode.OK, "API did not return the expected HTTP Status!");
+
+            var content = result.Content.ReadAsStringAsync().Result;
+            var data = JsonConvert.DeserializeObject<List<Tbl_DimRoom>>(content);
+            Assert.IsTrue(data.Count > 0, "API did not return the expected records!");
+            Assert.IsNotNull(data.First().RoomName, "Data should not be null!");
+        }
+
 		///// <summary>
-		///// Tbl_DimOffice Get All Grid Records works
-		///// </summary>
-		//[TestMethod]
-		//public void API_Office_Get_All_Grid_Works()
-		//{
-		//	// Arrange
-		//	// Act
-		//	var data = controller.GetGrid();
+        ///// Tbl_DimOffice Get All Grid Records works
+        ///// </summary>
+        //[TestMethod]
+        //public void API_Office_Get_All_Grid_Works()
+        //{
+        //	// Arrange
+        //	// Act
+        //	var data = controller.GetGrid();
 
-		//	// Assert
-		//	Assert.IsNotNull(data);
+        //	// Assert
+        //	Assert.IsNotNull(data);
 
-		//	Assert.IsTrue(data.Total >= SampleDataManager.Test_Tbl_DimOffice.Count, "API did not return the expected records!");
-		//	Assert.IsNotNull(data.Data.First().OfficeName, "Data should not be null!");
-		//}
+        //	Assert.IsTrue(data.Total >= SampleDataManager.Test_Tbl_DimOffice.Count, "API did not return the expected records!");
+        //	Assert.IsNotNull(data.Data.First().OfficeName, "Data should not be null!");
+        //}
 
-		/// <summary>
-		/// Tbl_DimOffice Repository Grid Paging works
-		/// </summary>
-		[TestMethod]
+        /// <summary>
+        /// Tbl_DimOffice Repository Grid Paging works
+        /// </summary>
+        [TestMethod]
 		public void Repository_Office_Grid_Paging_Works()
 		{
 			// Arrange
@@ -167,13 +187,30 @@ namespace Contoso.WebApi.UnitTests.API
 			var data = JsonConvert.DeserializeObject<Tbl_DimOffice>(content);
 			Assert.IsNotNull(data.OfficeName, "Data should not be null!");
 		}
-		#endregion
 
-		#region Create (POST) Data Tests
-		/// <summary>
-		/// Tbl_DimOffice Create (POST) fails with bad data
-		/// </summary>
-		[TestMethod]
+        /// <summary>
+        /// Tbl_DimOffice Get One Details works
+        /// </summary>
+        [TestMethod]
+        public void API_Office_Get_One_Details_Works()
+        {
+            // Arrange
+            // Act
+            var result = controller.GetOfficeDetails(SampleDataManager.Test_Tbl_DimOffice[0].OfficeID);
+
+            // Assert
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode, "Invalid Status Code returned!");
+            var content = result.Content.ReadAsStringAsync().Result;
+            var data = JsonConvert.DeserializeObject<Tbl_DimOffice>(content);
+            Assert.IsNotNull(data.OfficeName, "Data should not be null!");
+        }
+        #endregion
+
+        #region Create (POST) Data Tests
+        /// <summary>
+        /// Tbl_DimOffice Create (POST) fails with bad data
+        /// </summary>
+        [TestMethod]
 		public void API_Office_Post_Fails_BadData()
 		{
 			// Arrange

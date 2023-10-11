@@ -1,9 +1,10 @@
-﻿using System.Web;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Web.Optimization;
 
 namespace Contoso.WebApi
 {
-	public class BundleConfig
+    [ExcludeFromCodeCoverage]
+    public class BundleConfig
 	{
 		// For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
 		public static void RegisterBundles(BundleCollection bundles)

@@ -13,6 +13,7 @@ using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Rhino.Mocks;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Threading;
@@ -26,6 +27,7 @@ namespace Contoso.WebApi.Tests
     /// <summary>
     /// Base Test Class
     /// </summary>
+    [ExcludeFromCodeCoverage]
     [TestClass]
     public class BaseEffortTestController
     {

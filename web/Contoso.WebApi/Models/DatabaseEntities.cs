@@ -24,22 +24,26 @@
 // https://learn.microsoft.com/en-us/azure/app-service/tutorial-connect-msi-sql-database?tabs=windowsclient%2Cef%2Cdotnet
 //-----------------------------------------------------------------------
 
+using System;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.Data
 {
-	/// <summary>
-	/// Database Entities
-	/// </summary>
-	public class DatabaseEntities : DbContext
+    /// <summary>
+    /// Database Entities
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class DatabaseEntities : DbContext
 	{
 		public DatabaseEntities()
 		{
 			var conn = (System.Data.SqlClient.SqlConnection)Database.Connection;
-			if (!conn.ConnectionString.Contains("data source=."))
-			{
-				var credential = new Azure.Identity.DefaultAzureCredential();
+            if (conn.ConnectionString.IndexOf("data source=.", StringComparison.OrdinalIgnoreCase) < 0 &&
+				conn.ConnectionString.IndexOf("data source=(localdb)", StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                var credential = new Azure.Identity.DefaultAzureCredential();
 				var token = credential.GetToken(new Azure.Core.TokenRequestContext(new[] { "https://database.windows.net/.default" }));
 				conn.AccessToken = token.Token;
 			}

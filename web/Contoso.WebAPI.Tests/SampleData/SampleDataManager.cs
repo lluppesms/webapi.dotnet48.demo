@@ -9,10 +9,12 @@
 
 using Contoso.WebApi.Data;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Contoso.WebApi.SampleData
 {
-	public static partial class SampleDataManager
+    [ExcludeFromCodeCoverage]
+    public static partial class SampleDataManager
     {
         #region Sample Data Table Arrays
 

@@ -10,6 +10,7 @@ using Contoso.WebApi.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -17,11 +18,11 @@ using System.Web.Mvc;
 
 namespace Contoso.WebApi.Controllers
 {
-	/// <summary>
-	/// Base Controller
-	/// </summary>
-	// ReSharper disable once InconsistentNaming
-	public class _BaseController : Controller
+    /// <summary>
+    /// Base Controller
+    /// </summary>
+    [ExcludeFromCodeCoverage]
+    public class _BaseController : Controller
 	{
 		#region Configuration Functions
 		/// <summary>

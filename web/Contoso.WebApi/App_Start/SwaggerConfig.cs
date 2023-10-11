@@ -2,11 +2,13 @@ using System.Web.Http;
 using WebActivatorEx;
 using Contoso.WebApi;
 using Swashbuckle.Application;
+using System.Diagnostics.CodeAnalysis;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace Contoso.WebApi
 {
+    [ExcludeFromCodeCoverage]
     public class SwaggerConfig
     {
         public static void Register()

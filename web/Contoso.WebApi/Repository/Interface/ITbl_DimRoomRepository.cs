@@ -24,6 +24,14 @@ namespace Contoso.WebApi.Data
         /// <returns>Records</returns>
         IQueryable<Tbl_DimRoom> FindAll(string requestingUserName);
 
+        ///// <summary>
+        ///// Find All Rooms for one Office
+        ///// </summary>
+        ///// <param name="requestingUserName">Requesting UserName</param>
+        ///// <param name="officeId">Office Id</param>
+        ///// <returns>Records</returns>
+        //IQueryable<Tbl_DimRoom> FindAllForOneOffice(string requestingUserName, int officeId);
+
         /// <summary>
         /// Find Paged Records
         /// </summary>

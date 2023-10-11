@@ -90,27 +90,47 @@ namespace Contoso.WebApi.UnitTests.API
 			Assert.IsNotNull(data.First().EventName, "Data should not be null!");
 		}
 
+        /// <summary>
+        /// Tbl_FactEvent Get All Events For One Room works
+        /// </summary>
+        [TestMethod]
+        public void API_Event_Get_All_For_One_Room_Works()
+        {
+            // Arrange
+            // Act
+            var result = controller.GetEventsForOneRoom(SampleDataManager.Test_Tbl_DimRoom[0].RoomID);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.StatusCode == HttpStatusCode.OK, "API did not return the expected HTTP Status!");
+
+            var content = result.Content.ReadAsStringAsync().Result;
+            var data = JsonConvert.DeserializeObject<List<Tbl_FactEvent>>(content);
+            Assert.IsTrue(data.Count > 0, "API did not return the expected records!");
+            Assert.IsNotNull(data.First().EventName, "Data should not be null!");
+        }
+
 		///// <summary>
-		///// Tbl_FactEvent Get All Grid Records works
-		///// </summary>
-		//[TestMethod]
-		//public void API_Event_Get_All_Grid_Works()
-		//{
-		//	// Arrange
-		//	// Act
-		//	var data = controller.GetGrid();
+        ///// Tbl_FactEvent Get All Grid Records works
+        ///// </summary>
+        //[TestMethod]
+        //public void API_Event_Get_All_Grid_Works()
+        //{
+        //	// Arrange
+        //	// Act
+        //	var data = controller.GetGrid();
 
-		//	// Assert
-		//	Assert.IsNotNull(data);
+        //	// Assert
+        //	Assert.IsNotNull(data);
 
-		//	Assert.IsTrue(data.Total >= SampleDataManager.Test_Tbl_FactEvent.Count, "API did not return the expected records!");
-		//	Assert.IsNotNull(data.Data.First().EventName, "Data should not be null!");
-		//}
+        //	Assert.IsTrue(data.Total >= SampleDataManager.Test_Tbl_FactEvent.Count, "API did not return the expected records!");
+        //	Assert.IsNotNull(data.Data.First().EventName, "Data should not be null!");
+        //}
 
-		/// <summary>
-		/// Tbl_FactEvent Repository Grid Paging works
-		/// </summary>
-		[TestMethod]
+        /// <summary>
+        /// Tbl_FactEvent Repository Grid Paging works
+        /// </summary>
+        [TestMethod]
 		public void Repository_Event_Grid_Paging_Works()
 		{
 			// Arrange
